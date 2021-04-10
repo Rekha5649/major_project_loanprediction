@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan prediction</title>
+    <style>
+        body {
+            background: url('https://previews.123rf.com/images/ngad/ngad1612/ngad161200061/69570420-pile-of-money-coins-and-key-concept-in-insurance-loan-finance-and-buying-car-background.jpg');
+            background-size: cover;
+        }
+
+        h1 {
+            padding: 8px 6px 8px 6px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 50px;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        li {
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        p {
+            color: rgb(14, 13, 13);
+            text-align: center;
+        }
+
+        form {
+            padding: 20px;
+            text-align: center;
+            box-shadow: 20px 2px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        :placeholder-shown {
+            font-size: 12px;
+            padding: 3px;
+            width: 20em;
+            height: 2em;
+        }
+
+        input {
+            border-radius: 8px;
+            width: 18em;
+            height: 2em;
+            border: 2px solid rgba(109, 51, 51, 0.3);
+            box-shadow: 2px 2px 15px rgba(148, 56, 56, 0.5);
+        }
+
+        #Submit,
+        #Reset {
+            width: 10em;
+            height: 2.5em;
+            border-radius: 8px;
+            border: 2px solid rgb(66, 36, 37);
+        }
+
+        #Submit:hover,
+        #Reset:hover {
+            color: rgb(253, 249, 249);
+            background-color: rgb(32, 26, 26);
+            border-color: white;
+        }
+
+        #Submit:visited,
+        #Reset:visited {
+            color: white;
+            background-color: black;
+        }
+
+        #result {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 20px 2px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1><strong>Loan prediction</strong></h1>
+        <li><strong>Here, This application will tell you if you will be having chances to get Loan from landing club or
+                not. Fill up the Data in this form for loan prediction. </strong></li>
+        <form action="{{ url_for('predict')}}" method="post">
+            <p><input type='number' name='Amount Requested' placeholder='Amount Requested' required='required'>
+            <p>
+            <p><input type='number' name='Risk_Score' placeholder='Risk_Score' required='required'></p>
+            <p><input type='number' name='Debt-To-Income Ratio' placeholder='Debt-To-Income Ratio' required='required'>
+            </p>
+            <p><input type='number' name='Employment Length' placeholder='Employment Length' required='required'>
+            </p>
+            <div>
+                <input type='Submit' id='Submit' value='Submit'>
+                <input type='Reset' id='Reset' value='Reset'>
+            </div>
+        </form>
+
+        <p id='result'>
+            {{prediction_text}}
+        </p>
+    </div>
+</body>
+
+</html>
